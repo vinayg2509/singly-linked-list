@@ -67,5 +67,7 @@ public class SingleLinkedList<E> {
 
         // Displaying the list
         singleLinkedList.display();
+
+        System.out.println(singleLinkedList.size);
     }
 }
