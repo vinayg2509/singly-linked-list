@@ -73,9 +73,36 @@ package com.bridgelabz.linkedlist;
             currentNode = currentNode.next;
         }
 
+
         // Set the next of the last node to the new node
         currentNode.next = node;
     }
+
+    public void insertBetween(E data)
+    {
+        Node node= new Node(data);
+
+        if(head==null)
+        {
+            System.out.println("List is empty");
+            return;
+        }
+        if(head.next==null)
+        {
+            head.next=head;
+            return;
+        }
+        Node currentNode=head;
+        for(int i=1;i<size/2;i++)
+        {
+            currentNode=currentNode.next;
+        }
+        node.next=currentNode.next;
+        currentNode.next=node;
+
+    }
+
+
 
     // Main method to demonstrate linked list functionality
     public static void main(String[] args) {
@@ -83,8 +110,10 @@ package com.bridgelabz.linkedlist;
 
 
         singleLinkedList.addFirst(56);
-        singleLinkedList.addLast(30);
+
         singleLinkedList.addLast(70);
+
+        singleLinkedList.insertBetween(30);
         // Displaying the list
         singleLinkedList.display();
 
@@ -92,6 +121,7 @@ package com.bridgelabz.linkedlist;
     }
 
 }
+
 
 
 
