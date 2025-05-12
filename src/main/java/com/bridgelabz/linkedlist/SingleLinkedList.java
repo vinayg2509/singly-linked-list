@@ -152,6 +152,29 @@ package com.bridgelabz.linkedlist;
 
     }
 
+    public boolean insertAfter(E positionData,E data)
+    {
+        if(head==null)
+        {
+            return false;
+        }
+        Node node= new Node(data);
+        Node currentNode=head;
+        while (currentNode!=null)
+        {
+            if(currentNode.data.equals(positionData))
+            {
+               node.next=currentNode.next;
+               currentNode.next=node;
+               return  true;
+            }
+         currentNode=   currentNode.next;
+        }
+
+        System.out.println("Element "+positionData+" is not present in list");
+
+        return false;
+    }
 
 
     // Main method to demonstrate linked list functionality
@@ -161,7 +184,7 @@ package com.bridgelabz.linkedlist;
 
         singleLinkedList.addFirst(56);
 
-        singleLinkedList.addLast(70);
+        singleLinkedList.addFirst(70);
 
         singleLinkedList.insertBetween(30);
 
@@ -170,6 +193,8 @@ package com.bridgelabz.linkedlist;
 
         System.out.println(singleLinkedList.size);
 
+       singleLinkedList.insertAfter(30,40);
+        singleLinkedList.display();
 
     }
 
