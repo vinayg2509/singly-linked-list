@@ -102,6 +102,16 @@ package com.bridgelabz.linkedlist;
 
     }
 
+    public void deleteFirst()
+    {
+        if(head==null)
+        {
+            return;
+        }
+        head=head.next;
+        size--;
+    }
+
 
 
     // Main method to demonstrate linked list functionality
@@ -114,6 +124,8 @@ package com.bridgelabz.linkedlist;
         singleLinkedList.addLast(70);
 
         singleLinkedList.insertBetween(30);
+
+        singleLinkedList.deleteFirst();
         // Displaying the list
         singleLinkedList.display();
 
