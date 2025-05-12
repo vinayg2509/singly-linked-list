@@ -130,6 +130,28 @@ package com.bridgelabz.linkedlist;
 
     }
 
+    public Node searchNode(E data)
+    {
+        if(head==null)
+        {
+            System.out.println("List is empty");
+            return null;
+        }
+
+        Node currentNode=head;
+        while (currentNode!=null)
+        {
+            if(currentNode.data.equals(data))
+            {
+                //System.out.println(data +" data is present ,.....");
+                return currentNode;
+            }
+            currentNode = currentNode.next;
+        }
+       return  currentNode;
+
+    }
+
 
 
     // Main method to demonstrate linked list functionality
@@ -143,12 +165,12 @@ package com.bridgelabz.linkedlist;
 
         singleLinkedList.insertBetween(30);
 
-
-        singleLinkedList.deleteLast();
         // Displaying the list
         singleLinkedList.display();
 
         System.out.println(singleLinkedList.size);
+
+
     }
 
 }
