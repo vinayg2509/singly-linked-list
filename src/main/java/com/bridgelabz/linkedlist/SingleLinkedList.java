@@ -112,6 +112,24 @@ package com.bridgelabz.linkedlist;
         size--;
     }
 
+    public void deleteLast()
+    {
+        if(head==null)
+        {
+            return;
+        }
+        size--;
+        Node secondLast=head;
+        Node lastNode=head.next;
+        while (lastNode.next!=null)
+        {
+            lastNode=lastNode.next;
+            secondLast=secondLast.next;
+        }
+        secondLast.next=null;
+
+    }
+
 
 
     // Main method to demonstrate linked list functionality
@@ -125,7 +143,8 @@ package com.bridgelabz.linkedlist;
 
         singleLinkedList.insertBetween(30);
 
-        singleLinkedList.deleteFirst();
+
+        singleLinkedList.deleteLast();
         // Displaying the list
         singleLinkedList.display();
 
