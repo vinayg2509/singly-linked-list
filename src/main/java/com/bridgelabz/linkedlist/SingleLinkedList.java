@@ -130,12 +130,12 @@ package com.bridgelabz.linkedlist;
 
     }
 
-    public Node searchNode(E data)
+    public boolean searchNode(E data)
     {
         if(head==null)
         {
             System.out.println("List is empty");
-            return null;
+            return false;
         }
 
         Node currentNode=head;
@@ -143,12 +143,12 @@ package com.bridgelabz.linkedlist;
         {
             if(currentNode.data.equals(data))
             {
-                //System.out.println(data +" data is present ,.....");
-                return currentNode;
+
+                return true;
             }
             currentNode = currentNode.next;
         }
-       return  currentNode;
+       return  false;
 
     }
 
