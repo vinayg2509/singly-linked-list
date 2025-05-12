@@ -1,7 +1,7 @@
 package com.bridgelabz.linkedlist;
 
 // Generic SingleLinkedList class to implement a singly linked list
-public class SingleLinkedList<E> {
+ class SingleLinkedList<E> {
     Node head; // Reference to the head node of the list
 
     private int size; // To track the number of elements in the list
@@ -56,18 +56,44 @@ public class SingleLinkedList<E> {
         System.out.println(temp.data);
     }
 
+    // Method to add a new node with the given data at the end of the list
+    public void addLast(E data) {
+        // Create a new node with the provided data
+        Node node = new Node(data);
+
+        // If the list is empty, set the new node as the head
+        if (head == null) {
+            head = node;
+            return;
+        }
+
+        // Traverse the list to find the last node
+        Node currentNode = head;
+        while (currentNode.next != null) {  // Fix: stop at the last node, not after it
+            currentNode = currentNode.next;
+        }
+
+        // Set the next of the last node to the new node
+        currentNode.next = node;
+    }
+
     // Main method to demonstrate linked list functionality
     public static void main(String[] args) {
         SingleLinkedList singleLinkedList = new SingleLinkedList();
 
-        // Adding elements to the list
-        singleLinkedList.addFirst(70);
-        singleLinkedList.addFirst(30);
-        singleLinkedList.addFirst(56);
 
+        singleLinkedList.addFirst(56);
+        singleLinkedList.addLast(30);
+        singleLinkedList.addLast(70);
         // Displaying the list
         singleLinkedList.display();
 
         System.out.println(singleLinkedList.size);
     }
+
 }
+
+
+
+
+
