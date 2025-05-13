@@ -1,7 +1,7 @@
 package com.bridgelabz.linkedlist;
 
 // Generic SingleLinkedList class to implement a singly linked list
- class SingleLinkedList<E> {
+ class SingleLinkedList<E extends  Comparable>  {
     Node head; // Reference to the head node of the list
 
     private int size; // To track the number of elements in the list
@@ -12,7 +12,7 @@ package com.bridgelabz.linkedlist;
     }
 
     // Inner Node class to represent elements of the list
-    class Node<E> {
+    class Node<E extends  Comparable> {
         E data; // Data stored in the node
         Node next; // Reference to the next node
 
@@ -176,6 +176,52 @@ package com.bridgelabz.linkedlist;
         return false;
     }
 
+    public boolean delete(E data)
+    {
+        if(head==null)
+        {
+            System.out.println("List is empty....!");
+            return  false;
+        }
+
+        if(head.data.equals(data))
+        {
+            head=head.next;
+            return true;
+        }
+        Node currentNode= head;
+        while (currentNode!=null)
+        {
+            if(currentNode.next.data.equals(data))
+            {
+                currentNode.next=currentNode.next.next;
+                System.out.println("Size of list "+size());
+                return true;
+            }
+            currentNode=currentNode.next;
+        }
+
+        System.out.println("Size of list "+size());
+        return false;
+    }
+
+    public int size()
+    {
+        if(head==null)
+        {
+            return 0;
+        }
+        int size=0;
+        Node currentNode=head;
+        while (currentNode.next!=null)
+        {
+            size++;
+            currentNode=currentNode.next;
+        }
+
+        return ++size;
+    }
+
 
     // Main method to demonstrate linked list functionality
     public static void main(String[] args) {
@@ -191,9 +237,7 @@ package com.bridgelabz.linkedlist;
         // Displaying the list
         singleLinkedList.display();
 
-        System.out.println(singleLinkedList.size);
-
-       singleLinkedList.insertAfter(30,40);
+        singleLinkedList.insertAfter(70,40);
         singleLinkedList.display();
 
     }

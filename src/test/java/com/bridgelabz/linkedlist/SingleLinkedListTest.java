@@ -14,6 +14,7 @@ class SingleLinkedListTest
         singleLinkedList= new SingleLinkedList();
         singleLinkedList.addFirst(90);
         singleLinkedList.addFirst(56);
+        singleLinkedList.addLast(40);
         singleLinkedList.addLast(30);
     }
     @Test
@@ -28,5 +29,10 @@ class SingleLinkedListTest
         assertTrue(singleLinkedList.insertAfter(30,40),"30 is not present in list");
     }
 
+    @Test
+    public void deleteTest()
+    {
+        assertTrue(singleLinkedList.delete(40),"40 is not present");
+    }
 
 }
