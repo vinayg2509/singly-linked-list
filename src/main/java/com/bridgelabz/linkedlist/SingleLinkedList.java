@@ -1,8 +1,8 @@
 package com.bridgelabz.linkedlist;
 
 // Generic SingleLinkedList class to implement a singly linked list
- class SingleLinkedList<E extends  Comparable>  {
-    Node head; // Reference to the head node of the list
+ class SingleLinkedList<E extends  Comparable<E>>  {
+    Node<E> head; // Reference to the head node of the list
 
     private int size; // To track the number of elements in the list
 
@@ -12,9 +12,9 @@ package com.bridgelabz.linkedlist;
     }
 
     // Inner Node class to represent elements of the list
-    class Node<E extends  Comparable> {
+    class Node<E extends  Comparable<E>> {
         E data; // Data stored in the node
-        Node next; // Reference to the next node
+        Node<E> next; // Reference to the next node
 
         // Constructor for creating a node with given data
         Node(E data) {
@@ -26,7 +26,7 @@ package com.bridgelabz.linkedlist;
 
     // Method to add a node at the beginning of the list
     public void addFirst(E data) {
-        Node node = new Node(data); // Create new node with given data
+        Node<E> node = new Node(data); // Create new node with given data
 
         // If list is empty, set new node as head
         if (head == null) {
@@ -222,6 +222,33 @@ package com.bridgelabz.linkedlist;
         return ++size;
     }
 
+    public <E extends Comparable> void sortAscending()
+    {
+        if(head==null||head.next==null)
+        {
+            System.out.println("List is too short to sort");
+            return;
+        }
+
+        for (int i=0;i<size();i++)
+        {
+            Node currentNode=head;
+            while (currentNode.next!=null)
+            {
+                if(currentNode.data.compareTo(currentNode.next.data)>0)
+                {
+                    Comparable swap=currentNode.data;
+                    currentNode.data=currentNode.next.data;
+                    currentNode.next.data = swap;
+                }
+                currentNode=currentNode.next;
+
+            }
+        }
+
+
+
+    }
 
     // Main method to demonstrate linked list functionality
     public static void main(String[] args) {
@@ -234,10 +261,15 @@ package com.bridgelabz.linkedlist;
 
         singleLinkedList.insertBetween(30);
 
+        singleLinkedList.addFirst(90);
+
         // Displaying the list
         singleLinkedList.display();
 
-        singleLinkedList.insertAfter(70,40);
+//        singleLinkedList.insertAfter(70,40);
+//        singleLinkedList.display();
+
+        singleLinkedList.sortAscending();
         singleLinkedList.display();
 
     }
